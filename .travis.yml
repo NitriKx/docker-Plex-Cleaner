@@ -1,0 +1,11 @@
+sudo: required
+services:
+  - docker
+
+script:
+  - CURRENT_VERSION=$(curl -s https://raw.githubusercontent.com/ngovil21/Plex-Cleaner/master/PlexCleaner.py | grep "# Version" | tail -n 1 | sed 's/# Version \(.*\) - .*/\1/g')
+  - docker build -t "nitrikx/plex-cleaner:latest" .
+  - docker tag "nitrikx/plex-cleaner:latest" "nitrikx/plex-cleaner:$CURRENT_VERSION"
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - docker push "nitrikx/plex-cleaner:latest"
+  - docker push "nitrikx/plex-cleaner:$CURRENT_VERSION"
