@@ -5,7 +5,8 @@ services:
     container_name: plex-cleaner
     environment:
       # Execute the script every 5 minutes
-      - INTERVAL_IN_SECOND=300
+      - EXECUTION_CRON_EXPRESSION=*/5 * * * *
     volumes:
       - ./config:/config
-    
+      # - ./plexdata:/plexdata
+      # - ./logs:/logs
