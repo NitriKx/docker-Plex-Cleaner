@@ -6,7 +6,8 @@ trap 'exit 0' SIGTERM;
 # If the config file does not exists, we create one with the sample values
 if [ ! -f /config/Cleaner.conf ]; then
     echo "Creating sample config file...";
-    python /app/PlexCleaner.py --dump "/config/Cleaner.conf";
+    # @see https://github.com/ngovil21/Plex-Cleaner/pull/58
+    cp /app/Cleaner.conf.default /config/Cleaner.conf
 fi
 
 # Run the cleaning script every 5 minutes
