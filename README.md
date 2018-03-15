@@ -24,3 +24,10 @@ If you want to delete the file without passing by the Plex Web API, you need to 
 ```
 docker run -ti -v /path/to/config/folder:/config -v /path/to/plex/folder:/plexdata nitrikx/plex-cleaner
 ```
+
+and then adjust your configuration:
+
+```
+...
+    "default_location": "/plexdata",
+...
