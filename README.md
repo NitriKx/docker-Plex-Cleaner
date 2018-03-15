@@ -31,3 +31,11 @@ and then adjust your configuration:
 ...
     "default_location": "/plexdata",
 ...
+```
+
+## Logs
+
+You can also export the logs by mounting a volume on `/logs`:
+```
+docker run -ti -v /path/to/config/folder:/config -v /path/to/logs/folder:/logs nitrikx/plex-cleaner
+```

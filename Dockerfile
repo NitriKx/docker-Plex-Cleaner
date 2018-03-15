@@ -1,13 +1,16 @@
 FROM alpine:3.7
 
-RUN mkdir /app && mkdir /config
+RUN mkdir /app && mkdir /config && mkdir /plexdata && mkdir /logs && mkdir /etc/cron.d
 
-RUN apk add --no-cache python git bash && git clone https://github.com/ngovil21/Plex-Cleaner.git /app && apk del git
+RUN apk add --no-cache python git bash dcron && git clone https://github.com/ngovil21/Plex-Cleaner.git /app && apk del git && rm -rf /var/cache/apk/*
 
-COPY run-periodically.sh /app/run-periodically.sh
+# Add the scripts 
+COPY run-entry.sh /app/run-entry.sh
+COPY run-plexcleaner.sh /app/run-plexcleaner.sh
+RUN chmod +x /app/run-entry.sh && chmod +x /app/run-plexcleaner.sh
 
 # Default interval to 5min
-ENV INTERVAL_IN_SECOND 300
+ENV EXECUTION_CRON_EXPRESSION */5 * * * *
 
 # REQUIRED
 # Store the configuration out of the container
@@ -17,4 +20,8 @@ VOLUME ["/config"]
 # In case the script is configured to directly delete the files, we need to mount the plex data folder
 VOLUME ["/plexdata"]
 
-ENTRYPOINT ["/app/run-periodically.sh"]
+# OPTIONNAL
+# Contains the execution logs 
+VOLUME ["/logs"]
+
+ENTRYPOINT ["/app/run-entry.sh"]
