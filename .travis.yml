@@ -9,8 +9,6 @@ script:
 
 after_script:
   - ./tests/test-parameters-forwarding.sh
-
-deploy:
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
   - docker push "nitrikx/plex-cleaner:latest"
   - docker push "nitrikx/plex-cleaner:$CURRENT_VERSION"
