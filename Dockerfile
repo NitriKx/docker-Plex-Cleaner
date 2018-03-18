@@ -1,4 +1,5 @@
 FROM alpine:3.7
+MAINTAINER Benoît Sauvère <benoit.sauvere@gamil.com>
 
 RUN mkdir /app && mkdir /config && mkdir /plexdata && mkdir /logs && mkdir /etc/cron.d
 
