@@ -22,6 +22,9 @@ docker run -ti -v /path/to/config/folder:/config nitrikx/plex-cleaner --test
 ```
 # Run every 4 hours
 docker run -ti -v /path/to/config/folder:/config -e "EXECUTION_CRON_EXPRESSION=0 */4 * * *" nitrikx/plex-cleaner
+
+# Run once
+docker run -ti -v /path/to/config/folder:/config -e "EXECUTION_CRON_EXPRESSION=ONCE" nitrikx/plex-cleaner
 ````
 
 ## plex_delete = false
