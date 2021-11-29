@@ -3,12 +3,15 @@ MAINTAINER Benoît Sauvère <benoit.sauvere@gmail.com>
 
 RUN mkdir /app && mkdir /config && mkdir /plexdata && mkdir /logs && mkdir /etc/cron.d
 
-RUN apk add --no-cache python3 git bash dcron && git clone https://github.com/ngovil21/Plex-Cleaner.git /app && apk del git && rm -rf /var/cache/apk/*
+RUN apk add --no-cache python3 git bash dcron logrotate && git clone https://github.com/ngovil21/Plex-Cleaner.git /app && apk del git && rm -rf /var/cache/apk/*
 
 # Add the scripts 
 COPY run-entry.sh /app/run-entry.sh
 COPY run-plexcleaner.sh /app/run-plexcleaner.sh
 RUN chmod +x /app/run-entry.sh && chmod +x /app/run-plexcleaner.sh
+
+# Add the logrotate configuration
+COPY logrotate.conf /etc/logrotate.d/plexcleaner.conf
 
 # Default interval to 5min
 ENV EXECUTION_CRON_EXPRESSION */5 * * * *
