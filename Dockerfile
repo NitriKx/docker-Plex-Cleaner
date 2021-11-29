@@ -1,9 +1,9 @@
-FROM alpine:3.7
+FROM alpine:3.15
 MAINTAINER Benoît Sauvère <benoit.sauvere@gmail.com>
 
 RUN mkdir /app && mkdir /config && mkdir /plexdata && mkdir /logs && mkdir /etc/cron.d
 
-RUN apk add --no-cache python git bash dcron && git clone https://github.com/ngovil21/Plex-Cleaner.git /app && apk del git && rm -rf /var/cache/apk/*
+RUN apk add --no-cache python3 git bash dcron && git clone https://github.com/ngovil21/Plex-Cleaner.git /app && apk del git && rm -rf /var/cache/apk/*
 
 # Add the scripts 
 COPY run-entry.sh /app/run-entry.sh
