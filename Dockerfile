@@ -12,6 +12,7 @@ RUN chmod +x /app/run-entry.sh && chmod +x /app/run-plexcleaner.sh
 
 # Add the logrotate configuration
 COPY logrotate.conf /etc/logrotate.d/plexcleaner.conf
+RUN chmod 644 /etc/logrotate.d/plexcleaner.conf
 
 # Default interval to 5min
 ENV EXECUTION_CRON_EXPRESSION */5 * * * *
