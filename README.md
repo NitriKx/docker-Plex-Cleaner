@@ -17,7 +17,7 @@ docker run -ti -v /path/to/config/folder:/config nitrikx/plex-cleaner
 docker run -ti -v /path/to/config/folder:/config nitrikx/plex-cleaner --test
 ```
 
-## Execution frequence
+## Execution frequency
 
 ```
 # Run every 4 hours
@@ -26,6 +26,13 @@ docker run -ti -v /path/to/config/folder:/config -e "EXECUTION_CRON_EXPRESSION=0
 # Run once
 docker run -ti -v /path/to/config/folder:/config -e "EXECUTION_CRON_EXPRESSION=ONCE" nitrikx/plex-cleaner
 ````
+
+## `--reload_encoding`
+
+If you need to pass the `--reload_encoding` parameter, you could do something like this
+```
+docker run -ti -v /path/to/config/folder:/config nitrikx/plex-cleaner --reload_encoding
+```
 
 ## plex_delete = false
 
