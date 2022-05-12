@@ -1,8 +1,8 @@
 # Plex-Cleaner Docker
 
-[![Build Status](https://travis-ci.org/NitriKx/docker-Plex-Cleaner.svg?branch=master)](https://travis-ci.org/NitriKx/docker-Plex-Cleaner)
+[![Build docker image](https://github.com/NitriKx/docker-Plex-Cleaner/actions/workflows/build-image.yml/badge.svg)](https://github.com/NitriKx/docker-Plex-Cleaner/actions/workflows/build-image.yml)
 
-Dokerized version of ngovil21/Plex-Cleaner
+Dokerized version of [ngovil21/Plex-Cleaner](https://github.com/ngovil21/Plex-Cleaner)
 
 ## First run 
 
